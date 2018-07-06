@@ -24,10 +24,10 @@ public class LogInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
 
         SharedPreferences pref = this.getSharedPreferences("SavedData", Context.MODE_PRIVATE);
-        if(pref.contains("UserID")) {
+        /*if(pref.contains("UserID")) {
             goToMain();
             return;
-        }
+        }*/
 
 
         emailField = (EditText) findViewById(R.id.loginEmail);
