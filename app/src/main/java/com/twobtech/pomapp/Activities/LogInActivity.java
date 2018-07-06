@@ -1,6 +1,8 @@
 package com.twobtech.pomapp.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +22,13 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+
+        SharedPreferences pref = this.getSharedPreferences("SavedData", Context.MODE_PRIVATE);
+        if(pref.contains("UserID")) {
+            goToMain();
+            return;
+        }
+
 
         emailField = (EditText) findViewById(R.id.loginEmail);
         passField = (EditText) findViewById(R.id.loginPassword);

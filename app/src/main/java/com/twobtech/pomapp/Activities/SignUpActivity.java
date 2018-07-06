@@ -33,12 +33,12 @@ public class SignUpActivity extends AppCompatActivity {
         skipButton = (Button) findViewById(R.id.signUpSkipButton);
         loginButton = (Button) findViewById(R.id.signUpLoginButton);
 
-        /*skipButton.setOnClickListener(new View.OnClickListener() {
+        skipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showMain();
+                goToMain();
             }
-        });*/
+        });
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

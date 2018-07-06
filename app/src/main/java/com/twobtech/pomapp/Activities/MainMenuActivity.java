@@ -1,5 +1,7 @@
 package com.twobtech.pomapp.Activities;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,7 +17,7 @@ import com.twobtech.pomapp.R;
 public class MainMenuActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
-     
+
 
 
     @Override
@@ -50,6 +52,7 @@ public class MainMenuActivity extends AppCompatActivity {
                 });
 
 
+        final SharedPreferences pref = this.getSharedPreferences("SavedData", Context.MODE_PRIVATE);
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
@@ -57,12 +60,23 @@ public class MainMenuActivity extends AppCompatActivity {
                 new DrawerLayout.DrawerListener() {
                     @Override
                     public void onDrawerSlide(View drawerView, float slideOffset) {
-                        // Respond when the drawer's position changes
+
                     }
 
                     @Override
                     public void onDrawerOpened(View drawerView) {
-                        // Respond when the drawer is opened
+                        MenuItem item = ((NavigationView) findViewById(R.id.nav_view)).getMenu().findItem(R.id.nav_LogIn);
+                        SharedPreferences.Editor e = pref.edit();
+                        e.putString("UserID", "42");
+                        e.commit();
+                        if (pref.contains("UserID"))
+                        {
+                            item.setTitle("Log Out");
+                        }
+                        else
+                        {
+                            item.setTitle("Log In");
+                        }
                     }
 
                     @Override
