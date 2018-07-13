@@ -3,6 +3,7 @@
     package="com.twobtech.pomapp">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -24,8 +25,10 @@
         <activity android:name=".Activities.MainMenuActivity" />
         <activity android:name=".Activities.ProfileActivity" />
         <activity android:name=".Activities.QRCodeReader" />
-        <activity android:name=".MainMenuActivity2" />
-        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".Activities.MainMenuActivity2" />
+        <activity android:name=".Activities.TestActivity" />
+        <activity android:name=".Activities.DownloadActivity" />
+        <activity android:name=".Activities.MainViewActivity"></activity>
     </application>
 
 </manifest>

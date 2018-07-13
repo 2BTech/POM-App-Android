@@ -1,8 +1,10 @@
-package com.twobtech.pomapp;
+package com.twobtech.pomapp.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+
+import com.twobtech.pomapp.R;
 
 public class TestActivity extends AppCompatActivity {
 

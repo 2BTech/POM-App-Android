@@ -1,4 +1,4 @@
-package com.twobtech.pomapp;
+package com.twobtech.pomapp.Activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,6 +13,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.twobtech.pomapp.R;
 
 public class MainMenuActivity2 extends AppCompatActivity {
 
