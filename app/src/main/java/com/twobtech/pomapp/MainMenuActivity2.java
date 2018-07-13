@@ -1,7 +1,8 @@
-package com.twobtech.pomapp.Activities;
+package com.twobtech.pomapp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,16 +14,15 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.twobtech.pomapp.R;
-
-public class MainMenuActivity extends AppCompatActivity {
+public class MainMenuActivity2 extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.activity_main_menu2);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -35,20 +35,14 @@ public class MainMenuActivity extends AppCompatActivity {
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        // set item as selected to persist highlight
-                        menuItem.setChecked(true);
-                        // close drawer when item is tapped
-                        mDrawerLayout.closeDrawers();
-                        // Add code here to update the UI based on the item selected
-                        // For example, swap UI fragments here
-
-                        return false;
-                    }
-                });
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                item.setChecked(true);
+                mDrawerLayout.closeDrawer(Gravity.START);
+                return false;
+            }
+        });
 
         final SharedPreferences pref = this.getSharedPreferences("SavedData", Context.MODE_PRIVATE);
 
@@ -56,12 +50,23 @@ public class MainMenuActivity extends AppCompatActivity {
                 new DrawerLayout.DrawerListener() {
                     @Override
                     public void onDrawerSlide(View drawerView, float slideOffset) {
-                        // Respond when the drawer's position changes
+
                     }
 
                     @Override
                     public void onDrawerOpened(View drawerView) {
-                        // Respond when the drawer is opened
+                        MenuItem item = ((NavigationView) findViewById(R.id.nav_view)).getMenu().findItem(R.id.nav_LogIn);
+                        SharedPreferences.Editor e = pref.edit();
+                        e.putString("UserID", "42");
+                        e.commit();
+                        if (pref.contains("UserID"))
+                        {
+                            item.setTitle("Log Out");
+                        }
+                        else
+                        {
+                            item.setTitle("Log In");
+                        }
                     }
 
                     @Override
@@ -87,4 +92,7 @@ public class MainMenuActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
 }

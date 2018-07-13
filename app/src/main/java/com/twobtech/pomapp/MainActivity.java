@@ -1,8 +1,12 @@
 package com.twobtech.pomapp;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,6 +44,23 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 1000);
 
+
         return super.onCreateView(parent, name, context, attrs);
     }
+
+    void checkPermissions()
+    {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_DENIED)
+        {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 0);
+            checkPermissions();
+        }
+        else
+        {
+
+        }
+    }
 }
+
+

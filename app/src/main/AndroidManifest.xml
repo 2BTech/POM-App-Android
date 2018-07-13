@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.twobtech.pomapp">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,7 +22,10 @@
         <activity android:name=".Activities.ForgotPasswordActivity" />
         <activity android:name=".Activities.SignUpActivity" />
         <activity android:name=".Activities.MainMenuActivity" />
-        <activity android:name=".Activities.ProfileActivity"></activity>
+        <activity android:name=".Activities.ProfileActivity" />
+        <activity android:name=".Activities.QRCodeReader" />
+        <activity android:name=".MainMenuActivity2" />
+        <activity android:name=".TestActivity"></activity>
     </application>
 
 </manifest>
